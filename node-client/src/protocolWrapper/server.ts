@@ -1,5 +1,3 @@
-import { ClientMessage } from "../../bindings/enums/ClientMessage";
-import { ChatMessage } from "../../bindings/messageTypes/ClientMessage/ChatMessage";
 import { Socket } from "./socket";
 
 export class Server {
@@ -8,8 +6,6 @@ export class Server {
     }
 
     public sendChatMessage(message: string)  {
-        
-
         this.socket.sendMessage({
             'ChatMessage' : {
                 message,
