@@ -2,7 +2,7 @@ use tokio::net::TcpStream;
 use tokio_tungstenite::{WebSocketStream, tungstenite::Message};
 use futures_util::{SinkExt, StreamExt};
 use tokio_tungstenite::tungstenite::Result;
-use types::ClientMessage;
+use types::ClientHandler;
 
 pub struct Client {
     pub ws: WebSocketStream<TcpStream>
@@ -13,7 +13,7 @@ impl Client {
         Client {ws}
     }
 
-    pub async fn send_message(self: &mut Self, msg: ClientMessage) -> Result<()> {
+    pub async fn send_message(self: &mut Self, msg: ClientHandler) -> Result<()> {
         let serialized_message = serde_json::to_string(&msg).unwrap();
         let message = Message::Text(serialized_message);
         self.ws.send(message).await?;

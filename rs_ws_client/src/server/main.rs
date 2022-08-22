@@ -1,6 +1,8 @@
 mod connected_user;
 mod handlers;
 mod ws_wrapper;
+mod handler_trait;
+mod room;
 
 use std::net::SocketAddr;
 
